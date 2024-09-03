@@ -1,3 +1,5 @@
+"use client";
+
 import { ModeToggle } from "@/components/ModeToggle";
 import { User } from "lucide-react";
 import Image from "next/image";
@@ -6,10 +8,16 @@ import UserToggle from "./UserToggle";
 import MobileMenu from "./MobileMenu";
 import { NavMenu } from "@/constants";
 import NavItem from "./NavItem";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+  const pathname = usePathname();
   return (
-    <div className={"w-full z-20 items-center fixed"}>
+    <div
+      className={`w-full z-20 items-center ${
+        pathname != "/" ? "bg-black" : "fixed "
+      }`}
+    >
       <div className="container mx-auto">
         <div className="px-4 py-6 flex items-center justify-center">
           <div className="w-24 py-4 px-3 rounded-xl bg-white">
@@ -19,6 +27,7 @@ const Navbar = () => {
               width={500}
               height={500}
               className="w-full"
+              priority
             />
           </div>
           <div className="flex-row lg:flex hidden items-center gap-9 ml-auto">

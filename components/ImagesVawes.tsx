@@ -28,7 +28,6 @@ const ImagesVawes = ({ myClassName }: ImagesVawesProps) => {
           width={2000}
           height={62}
           className={`w-full lg-block ${myClassName}`}
-          priority
         />
       ) : (
         <Image
@@ -37,7 +36,6 @@ const ImagesVawes = ({ myClassName }: ImagesVawesProps) => {
           width={2000}
           height={62}
           className={`w-full lg-block ${myClassName}`}
-          priority
         />
       )}
     </>

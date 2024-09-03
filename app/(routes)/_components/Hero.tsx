@@ -12,6 +12,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { SliderImage } from "@/constants";
 import Image from "next/image";
 import ImagesVawes from "@/components/ImagesVawes";
+import HeroForm from "./HeroForm";
 
 const Hero = () => {
   return (
@@ -41,9 +42,10 @@ const Hero = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="left-0" />
-        <CarouselNext className="right-0" />
+        <CarouselPrevious className="hidden lg:flex left-0" />
+        <CarouselNext className="hidden lg:flex right-0" />
       </Carousel>
+      <HeroForm />
     </div>
   );
 };

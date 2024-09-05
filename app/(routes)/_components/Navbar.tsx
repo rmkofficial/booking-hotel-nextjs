@@ -3,20 +3,41 @@
 import { ModeToggle } from "@/components/ModeToggle";
 import { User } from "lucide-react";
 import Image from "next/image";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import UserToggle from "./UserToggle";
 import MobileMenu from "./MobileMenu";
 import { NavMenu } from "@/constants";
 import NavItem from "./NavItem";
 import { usePathname } from "next/navigation";
+import { useTheme } from "next-themes"; 
 
 const Navbar = () => {
   const pathname = usePathname();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const { theme } = useTheme(); 
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const backgroundColor = isScrolled
+    ? theme === "dark"
+      ? "bg-black"
+      : "bg-black bg-opacity-75"
+    : "bg-transparent";
+
   return (
     <div
-      className={`w-full z-20 items-center ${
-        pathname != "/" ? "bg-black" : "fixed "
-      }`}
+      className={`w-full z-30 fixed top-0 left-0 transition-all duration-300 ${backgroundColor}`}
     >
       <div className="container mx-auto">
         <div className="px-4 py-6 flex items-center justify-center">
